@@ -1,0 +1,1 @@
+bot\scripts\activate.bat && main.py
