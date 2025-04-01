@@ -1,6 +1,6 @@
 import logging
 from asyncio import run
-from aiogram import Dispatcher, Bot
+from aiogram import Dispatcher, Bot, types
 
 from config import TOKEN
 from database.base import init_database, close_database
@@ -13,9 +13,13 @@ dp = Dispatcher()
 async def main():
     """Главный поток"""
 
+    commands = [
+        types.BotCommand(command='start', description='главное меню')
+    ]
+
     dp.include_routers(*routers)
     await init_database()
-    await bot.delete_webhook(drop_pending_updates=True)
+    await bot.set_my_commands(commands)
     await dp.start_polling(bot, allowed_updates=["message", 'callback_query'])
     await close_database()
 
