@@ -1,5 +1,4 @@
-import logging
-from asyncio import run
+import logging, asyncio
 from aiogram import Dispatcher, Bot, types
 
 from config import TOKEN
@@ -31,4 +30,4 @@ async def on_shutdown():
 
 
 if __name__ == '__main__':
-    run(main())
+    asyncio.run(main())
